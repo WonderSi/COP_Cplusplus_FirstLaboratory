@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "IMatrix.cpp"
 #include <iostream>
 
 class Matrix : public IMatrix {
@@ -19,8 +19,35 @@ public:
     Matrix(int rows, int cols);
     ~Matrix();
 
-    int getRows() const override;
-    int getCols() const override;
+    int getRows() const override {
+        return rows_;
+    };
+    int getCols() const override {
+        return cols_;
+    };
+    void setRows (int rows) override;
+    void setCols (int cols) override;
 
+    bool EqMatrix(const IMatrix& other) override;
+    void SumMatrix(const IMatrix& other) override;
+    void SubMatrix(const IMatrix& other) override;
+    void MulNumber(const double num) override;
+    void MulMatrix(const IMatrix& num) override;
+    IMatrix* Transpose() override;
+    IMatrix* CalcComplements() override;
+    double Determinant() override;
+    IMatrix* InverseMatrix() override;
+
+    IMatrix* operator+(const IMatrix& other) const override;
+    IMatrix* operator-(const IMatrix& other) const override;
+    IMatrix* operator*(const IMatrix& other) const override;
+    IMatrix* operator*(const double num) const override;
+    bool operator==(const IMatrix& other) const override;
+    IMatrix& operator=(const IMatrix& other)  override;
+    IMatrix& operator+=(const IMatrix& other) override;
+    IMatrix& operator-=(const IMatrix& other) override;
+    IMatrix& operator*=(const IMatrix& other) override;
+    IMatrix& operator*=(const double num) override;
     double& operator()(int row, int col) override;
+    const double& operator()(int row, int col) const override;
 };
