@@ -62,6 +62,25 @@ void Matrix::SumMatrix(const IMatrix& other) {
     }
 }
 
+void Matrix::SubMatrix(const IMatrix& other) {
+    if (rows_ != other.getRows() || cols_ != other.getCols()) {
+        throw std::invalid_argument("Different dimensions of the matrices");
+    }
+    for (int i = 0; i < rows_; i++) {
+        for (int j = 0; j < cols_; j++) {
+            matrix_[i][j] -= other(i,j);
+        }
+    }
+}
+
+void Matrix::MulNumber(const double num) {
+    for (int i = 0; i < rows_; i++) {
+        for (int j = 0; j < cols_; j++) {
+            matrix_[i][j] *= num;
+        }
+    }
+};
+
 // Operator
 double& Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
