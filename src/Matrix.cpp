@@ -18,10 +18,28 @@ void Matrix::memoryDeallocation() {
     delete[] matrix_;
 }
 
+
+
 Matrix::Matrix() {
     rows_ = 0;
     cols_ = 0;
     matrix_ = nullptr;
 }
+
+Matrix::Matrix(int rows, int cols) {
+    rows_ = rows;
+    cols_ = cols;
+    memoryAllocation();
+}
+
+Matrix::~Matrix() {
+    memoryDeallocation();
+}
+
+double& Matrix::operator()(int row, int col) {
+    if ()
+}
+
+
 
 

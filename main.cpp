@@ -1,4 +1,5 @@
 #include <iostream>
+#include "include/Matrix.h"
 
 int main() {
     IMatrix* A = new Matrix(3, 3);
