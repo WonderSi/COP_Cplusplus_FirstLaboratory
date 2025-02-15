@@ -32,7 +32,7 @@ public:
     void SumMatrix(const IMatrix& other) override;
     void SubMatrix(const IMatrix& other) override;
     void MulNumber(const double num) override;
-    void MulMatrix(const IMatrix& num) override;
+    void MulMatrix(const IMatrix& other) override;
     IMatrix* Transpose() override;
     IMatrix* CalcComplements() override;
     double Determinant() override;

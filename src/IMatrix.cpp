@@ -19,7 +19,7 @@ public:
     virtual void SumMatrix(const IMatrix& other) = 0;
     virtual void SubMatrix(const IMatrix& other) = 0;
     virtual void MulNumber(const double num) = 0;
-    virtual void MulMatrix(const IMatrix& num) = 0;
+    virtual void MulMatrix(const IMatrix& other) = 0;
     virtual IMatrix* Transpose() = 0;
     virtual IMatrix* CalcComplements() = 0;
     virtual double Determinant() = 0;

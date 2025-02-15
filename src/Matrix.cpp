@@ -81,6 +81,21 @@ void Matrix::MulNumber(const double num) {
     }
 };
 
+void Matrix::MulMatrix(const IMatrix& other) {
+    if (cols_ != other.getRows()) {
+        throw std::invalid_argument("The number of columns of the first matrix is not equal to the number of columns of the second matrix");
+    }
+    Matrix result(rows_, other.getCols());
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < other.getCols(); ++j) {
+            for (int k = 0; k < cols_; ++k) {
+                result.matrix_[i][j] += matrix_[i][k] * other(k,j);
+            }
+        }
+    }
+    *this = result; //???
+};
+
 // Operator
 double& Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
