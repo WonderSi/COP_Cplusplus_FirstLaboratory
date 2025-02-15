@@ -8,5 +8,6 @@ class IMatrix {
 public:
     virtual ~IMatrix() = default;
 
-    virtual
+    virtual int getRows() const = 0;
+    virtual int getCols() const = 0;
 };

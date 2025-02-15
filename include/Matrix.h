@@ -14,10 +14,16 @@
 class Matrix {
 private :
     int rows_, cols_;
-    double **matrix;
+    double **matrix_;
+
+    void memoryAllocation();
+    void memoryDeallocation();
 
 public:
     Matrix();
     Matrix(int rows, int cols);
     ~Matrix();
+
+    int getRows() const override;
+    int getCols() const override;
 };
