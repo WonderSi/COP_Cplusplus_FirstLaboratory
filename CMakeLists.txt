@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(COP_Cplusplus_FirstLaboratory main.cpp
         Matrix.h
-        Matrix.cpp)
+        Matrix.cpp
+        IMatrix.cpp)

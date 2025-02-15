@@ -61,6 +61,12 @@ build CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/Matrix.cpp.obj: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir
   OBJECT_FILE_DIR = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir
 
+build CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/IMatrix.cpp.obj: CXX_COMPILER__COP_Cplusplus_FirstLaboratory_unscanned_Debug C$:/Users/011ko/CLionProjects/COP_Cplusplus_FirstLaboratory/IMatrix.cpp || cmake_object_order_depends_target_COP_Cplusplus_FirstLaboratory
+  DEP_FILE = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir\IMatrix.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir
+  OBJECT_FILE_DIR = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target COP_Cplusplus_FirstLaboratory
@@ -69,7 +75,7 @@ build CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/Matrix.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable COP_Cplusplus_FirstLaboratory.exe
 
-build COP_Cplusplus_FirstLaboratory.exe: CXX_EXECUTABLE_LINKER__COP_Cplusplus_FirstLaboratory_Debug CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/main.cpp.obj CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/Matrix.cpp.obj
+build COP_Cplusplus_FirstLaboratory.exe: CXX_EXECUTABLE_LINKER__COP_Cplusplus_FirstLaboratory_Debug CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/main.cpp.obj CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/Matrix.cpp.obj CMakeFiles/COP_Cplusplus_FirstLaboratory.dir/IMatrix.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\COP_Cplusplus_FirstLaboratory.dir
