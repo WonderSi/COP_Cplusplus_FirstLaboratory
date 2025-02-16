@@ -153,6 +153,7 @@ IMatrix *Matrix::CalcComplements() {
             calcComplementsMatrix->matrix_[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * minorDet;
         }
     }
+    return calcComplementsMatrix;
 }
 
 double Matrix::Determinant() {
