@@ -181,6 +181,18 @@ double Matrix::Determinant() {
     return det;
 };
 
+IMatrix* Matrix::InverseMatrix() {
+    double det = Determinant();
+    if (det == 0) {
+        throw std::logic_error("Determinant is zero");
+    }
+    IMatrix* complement = CalcComplements();
+    IMatrix* transpose = complement->Transpose();
+    transpose->MulNumber(1 / det);
+    delete complement;
+    return transpose;
+};
+
 // Operator
 double &Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
