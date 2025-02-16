@@ -191,6 +191,7 @@ IMatrix* Matrix::InverseMatrix() {
     transpose->MulNumber(1 / det);
     delete complement;
     return transpose;
+    //test
 };
 
 // Operator
