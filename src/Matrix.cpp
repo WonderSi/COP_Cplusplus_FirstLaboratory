@@ -82,6 +82,7 @@ bool Matrix::EqMatrix(const IMatrix &other) {
             }
         }
     }
+    return true;
 }
 
 void Matrix::SumMatrix(const IMatrix &other) {
