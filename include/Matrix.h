@@ -29,7 +29,7 @@ public:
     void setRows (int rows) override;
     void setCols (int cols) override;
 
-    bool EqMatrix(const IMatrix& other) override;
+    bool EqMatrix(const IMatrix& other) const override;
     void SumMatrix(const IMatrix& other) override;
     void SubMatrix(const IMatrix& other) override;
     void MulNumber(const double num) override;

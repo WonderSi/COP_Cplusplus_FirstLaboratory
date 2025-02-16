@@ -71,7 +71,7 @@ IMatrix *Matrix::getMinor(int rows, int cols) {
 }
 
 // Operation
-bool Matrix::EqMatrix(const IMatrix &other) {
+bool Matrix::EqMatrix(const IMatrix &other) const {
     if (rows_ != other.getRows() || cols_ != other.getCols()) {
         return false;
     }
@@ -243,6 +243,10 @@ IMatrix* Matrix::operator*(const double num) const {
     IMatrix *result = new Matrix(getRows(), getCols());
     result->MulNumber(num);
     return result;
+};
+
+bool Matrix::operator==(const IMatrix& other) const {
+    return EqMatrix(other);
 };
 
 double &Matrix::operator()(int row, int col) {

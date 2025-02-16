@@ -17,7 +17,7 @@ public:
     virtual IMatrix* getMinor(int rows, int cols) = 0;
 
     // Operation
-    virtual bool EqMatrix(const IMatrix& other) = 0;
+    virtual bool EqMatrix(const IMatrix& other) const = 0;
     virtual void SumMatrix(const IMatrix& other) = 0;
     virtual void SubMatrix(const IMatrix& other) = 0;
     virtual void MulNumber(const double num) = 0;
