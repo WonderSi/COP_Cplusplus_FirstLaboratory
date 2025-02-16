@@ -50,6 +50,7 @@ Matrix::~Matrix() {
     memoryDeallocation();
 }
 
+
 // Setter / Getter
 IMatrix *Matrix::getMinor(int rows, int cols) {
     if (rows < 0 || rows >= rows_ || cols < 0 || cols >= cols_) {
@@ -69,6 +70,7 @@ IMatrix *Matrix::getMinor(int rows, int cols) {
     }
     return minor;
 }
+
 
 // Operation
 bool Matrix::EqMatrix(const IMatrix &other) const {
@@ -197,6 +199,7 @@ IMatrix *Matrix::InverseMatrix() {
     delete complement;
     return transpose;
 };
+
 
 // Operator
 IMatrix *Matrix::operator+(const IMatrix &other) const {

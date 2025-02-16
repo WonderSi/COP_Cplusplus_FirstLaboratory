@@ -14,11 +14,13 @@ private :
     void memoryAllocation();
     void memoryDeallocation();
 public:
+    // Constructor / Destructor
     Matrix();
     Matrix(int rows, int cols);
     Matrix(const Matrix& other);
     ~Matrix();
 
+    // Setter / Getter
     int getRows() const override {
         return rows_;
     };
@@ -29,6 +31,7 @@ public:
     void setRows (int rows) override;
     void setCols (int cols) override;
 
+    // Operation
     bool EqMatrix(const IMatrix& other) const override;
     void SumMatrix(const IMatrix& other) override;
     void SubMatrix(const IMatrix& other) override;
@@ -39,6 +42,7 @@ public:
     double Determinant() override;
     IMatrix* InverseMatrix() override;
 
+    // Operator
     IMatrix* operator+(const IMatrix& other) const override;
     IMatrix* operator-(const IMatrix& other) const override;
     IMatrix* operator*(const IMatrix& other) const override;
