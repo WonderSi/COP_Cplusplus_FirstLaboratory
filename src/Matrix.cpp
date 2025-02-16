@@ -35,7 +35,7 @@ Matrix::Matrix(int rows, int cols) {
     memoryAllocation();
 }
 
-Matrix::Matrix(const Matrix& other) {
+Matrix::Matrix(const Matrix &other) {
     rows_ = other.rows_;
     cols_ = other.cols_;
     memoryAllocation();
@@ -51,11 +51,11 @@ Matrix::~Matrix() {
 }
 
 // Setter / Getter
-IMatrix* Matrix::getMinor(int rows, int cols) {
+IMatrix *Matrix::getMinor(int rows, int cols) {
     if (rows < 0 || rows >= rows_ || cols < 0 || cols >= cols_) {
         throw std::out_of_range("out_of_range");
     }
-    Matrix* minor = new Matrix(rows_ - 1, cols_ - 1);
+    Matrix *minor = new Matrix(rows_ - 1, cols_ - 1);
     int ind_i = 0;
     for (int i = 0; i < rows_; ++i) {
         if (rows == i) { continue; }
@@ -145,10 +145,10 @@ IMatrix *Matrix::CalcComplements() {
     if (rows_ != cols_) {
         throw std::invalid_argument("The matrix is not square");
     }
-    Matrix* calcComplementsMatrix = new Matrix(rows_, cols_);
+    Matrix *calcComplementsMatrix = new Matrix(rows_, cols_);
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
-            IMatrix* minor = getMinor(i, j);
+            IMatrix *minor = getMinor(i, j);
             double minorDet = minor->Determinant();
             calcComplementsMatrix->matrix_[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * minorDet;
             delete minor;
@@ -177,7 +177,7 @@ double Matrix::Determinant() {
         }
         det *= temp.matrix_[i][i];
         for (int j = i + 1; j < rows_; ++j) {
-            double factor = temp.matrix_[j][i]/temp.matrix_[i][i];
+            double factor = temp.matrix_[j][i] / temp.matrix_[i][i];
             for (int k = 0; k < cols_; ++k) {
                 temp.matrix_[j][k] -= factor * temp.matrix_[i][k];
             }
@@ -186,42 +186,62 @@ double Matrix::Determinant() {
     return det;
 };
 
-IMatrix* Matrix::InverseMatrix() {
+IMatrix *Matrix::InverseMatrix() {
     double det = Determinant();
     if (det == 0) {
         throw std::logic_error("Determinant is zero");
     }
-    IMatrix* complement = CalcComplements();
-    IMatrix* transpose = complement->Transpose();
+    IMatrix *complement = CalcComplements();
+    IMatrix *transpose = complement->Transpose();
     transpose->MulNumber(1 / det);
     delete complement;
     return transpose;
 };
 
 // Operator
-IMatrix* Matrix::operator+(const IMatrix& other) const {
+IMatrix *Matrix::operator+(const IMatrix &other) const {
     if (getRows() != other.getRows() || getCols() != other.getCols()) {
         throw std::invalid_argument("Matrices dimensions must match for addition");
     }
     IMatrix *result = new Matrix(getRows(), getCols());
     for (int i = 0; i < getRows(); ++i) {
         for (int j = 0; j < getCols(); ++j) {
-            (*result)(i, j) = (*this)(i,j) + other(i, j);
+            (*result)(i, j) = (*this)(i, j) + other(i, j);
         }
     }
     return result;
 };
 
-IMatrix* Matrix::operator-(const IMatrix& other) const {
+IMatrix *Matrix::operator-(const IMatrix &other) const {
     if (getRows() != other.getRows() || getCols() != other.getCols()) {
         throw std::invalid_argument("Matrices dimensions must match for addition");
     }
     IMatrix *result = new Matrix(getRows(), getCols());
     for (int i = 0; i < getRows(); ++i) {
         for (int j = 0; j < getCols(); ++j) {
-            (*result)(i, j) = (*this)(i,j) - other(i, j);
+            (*result)(i, j) = (*this)(i, j) - other(i, j);
         }
     }
+    return result;
+};
+
+IMatrix *Matrix::operator*(const IMatrix &other) const {
+    if (getCols() != other.getRows()) {
+        throw std::invalid_argument(
+                "The number of columns of the first matrix is not equal to the number of rows of the second matrix");
+    }
+    IMatrix *result = new Matrix(getRows(), getCols());
+    for (int i = 0; i < getRows(); ++i) {
+        for (int j = 0; j < getCols(); ++j) {
+            (*result)(i, j) = (*this)(i, j) * other(i, j);
+        }
+    }
+    return result;
+};
+
+IMatrix* Matrix::operator*(const double num) const {
+    IMatrix *result = new Matrix(getRows(), getCols());
+    result->MulNumber(num);
     return result;
 };
 
