@@ -18,6 +18,7 @@ public:
     Matrix();
     Matrix(int rows, int cols);
     Matrix(const Matrix& other);
+    Matrix(Matrix&& other);
     ~Matrix();
 
     // Setter / Getter

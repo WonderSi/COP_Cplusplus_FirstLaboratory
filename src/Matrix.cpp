@@ -46,6 +46,15 @@ Matrix::Matrix(const Matrix &other) {
     }
 }
 
+Matrix::Matrix(Matrix &&other) {
+    rows_ = other.rows_;
+    cols_ = other.cols_;
+    matrix_ = other.matrix_;
+    other.rows_ = 0;
+    other.cols_ = 0;
+    other.matrix_ = nullptr;
+}
+
 Matrix::~Matrix() {
     memoryDeallocation();
 }
