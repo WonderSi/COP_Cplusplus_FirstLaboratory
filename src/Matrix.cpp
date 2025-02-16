@@ -267,6 +267,11 @@ IMatrix& Matrix::operator+=(const IMatrix& other) {
     return *this;
 };
 
+IMatrix& Matrix::operator-=(const IMatrix& other) {
+    SubMatrix(other);
+    return *this;
+};
+
 double &Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
         throw std::out_of_range("out_of_range");
