@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 23)
 add_executable(COP_Cplusplus_FirstLaboratory main.cpp
         include/Matrix.h
         src/Matrix.cpp
-        src/IMatrix.cpp)
+        include/IMatrix.h)

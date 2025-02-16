@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "../include/Matrix.h"
+#include "Matrix.h"
 
 class IMatrix {
 public:

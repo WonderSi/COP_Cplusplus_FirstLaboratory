@@ -3,6 +3,7 @@
 //
 
 #include "../include/Matrix.h"
+#include "../include/IMatrix.h"
 
 // Memory
 void Matrix::memoryAllocation() {

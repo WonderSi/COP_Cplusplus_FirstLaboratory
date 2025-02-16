@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "IMatrix.cpp"
+#include "IMatrix.h"
 #include <iostream>
 
 class Matrix : public IMatrix {
