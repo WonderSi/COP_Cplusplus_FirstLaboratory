@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include "../include/Matrix.h"
 
 class IMatrix {
 public:
@@ -13,6 +14,7 @@ public:
     virtual int getCols() const = 0;
     virtual void setRows(int rows) = 0;
     virtual void setCols(int cols) = 0;
+    virtual IMatrix* getMinor(int rows, int cols) = 0;
 
     // Operation
     virtual bool EqMatrix(const IMatrix& other) = 0;
@@ -21,6 +23,7 @@ public:
     virtual void MulNumber(const double num) = 0;
     virtual void MulMatrix(const IMatrix& other) = 0;
     virtual IMatrix* Transpose() = 0;
+    virtual int CalcComplementsElements(int rows, int cols) = 0;
     virtual IMatrix* CalcComplements() = 0;
     virtual double Determinant() = 0;
     virtual IMatrix* InverseMatrix() = 0;

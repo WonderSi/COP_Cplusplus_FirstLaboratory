@@ -13,10 +13,10 @@ private :
 
     void memoryAllocation();
     void memoryDeallocation();
-
 public:
     Matrix();
     Matrix(int rows, int cols);
+    Matrix(const Matrix& other);
     ~Matrix();
 
     int getRows() const override {
@@ -25,6 +25,7 @@ public:
     int getCols() const override {
         return cols_;
     };
+    IMatrix* getMinor(int rows, int cols) override;
     void setRows (int rows) override;
     void setCols (int cols) override;
 

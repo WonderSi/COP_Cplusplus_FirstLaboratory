@@ -33,8 +33,39 @@ Matrix::Matrix(int rows, int cols) {
     memoryAllocation();
 }
 
+Matrix::Matrix(const Matrix& other) {
+    rows_ = other.rows_;
+    cols_ = other.cols_;
+    memoryAllocation();
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            matrix_[i][j] = other.matrix_[i][j];
+        }
+    }
+}
+
 Matrix::~Matrix() {
     memoryDeallocation();
+}
+
+// Setter / Getter
+IMatrix* Matrix::getMinor(int rows, int cols) {
+    if (rows < 0 || rows >= rows_ || cols < 0 || cols >= cols_) {
+        throw std::out_of_range("out_of_range");
+    }
+    Matrix* minor = new Matrix(rows_ - 1, cols_ - 1);
+    int ind_i = 0;
+    for (int i = 0; i < rows_; ++i) {
+        if (rows == i) { continue; }
+        int ind_j = 0;
+        for (int j = 0; j < cols_; ++j) {
+            if (cols == j) { continue; }
+            minor->matrix_[ind_i][ind_j] = matrix_[i][j];
+            ind_j++;
+        }
+        ind_i++;
+    }
+    return minor;
 }
 
 // Operation
@@ -97,8 +128,8 @@ void Matrix::MulMatrix(const IMatrix &other) {
     *this = result; //???
 };
 
-IMatrix* Matrix::Transpose() {
-    Matrix* result = new Matrix(cols_, rows_);
+IMatrix *Matrix::Transpose() {
+    Matrix *result = new Matrix(cols_, rows_);
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
             result->matrix_[j][i] = matrix_[i][j];
@@ -106,6 +137,49 @@ IMatrix* Matrix::Transpose() {
     }
     return result;
 }
+
+IMatrix *Matrix::CalcComplements() {
+    if (rows_ != cols_) {
+        throw std::invalid_argument("The matrix is not square");
+    }
+    Matrix* calcComplementsMatrix = new Matrix(rows_, cols_);
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            IMatrix* minor = getMinor(i, j);
+            double minorDet = minor->Determinant();
+            calcComplementsMatrix->matrix_[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * minorDet;
+        }
+    }
+}
+
+double Matrix::Determinant() {
+    if (rows_ != cols_) {
+        throw std::invalid_argument("The matrix is not square");
+    }
+    Matrix temp(*this); // Copy
+    double det = 1;
+    for (int i = 0; i < rows_; ++i) {
+        if (matrix_[i][i] == 0) {
+            bool swapped = false;
+            for (int k = 0; k < rows_; ++k) {
+                if (matrix_[k][i] != 0) {
+                    std::swap(matrix_[k], matrix_[i]);
+                    det *= -1;
+                    swapped = true;
+                }
+            }
+            if (!swapped) { return 0; };
+        }
+        det *= temp.matrix_[i][i];
+        for (int j = i + 1; j < rows_; ++j) {
+            double factor = temp.matrix_[j][i]/temp.matrix_[i][i];
+            for (int k = 0; k < cols_; ++k) {
+                temp.matrix_[j][k] -= factor * temp.matrix_[i][k];
+            }
+        }
+    }
+    return det;
+};
 
 // Operator
 double &Matrix::operator()(int row, int col) {
