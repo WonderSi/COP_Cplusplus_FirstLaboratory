@@ -196,6 +196,19 @@ IMatrix* Matrix::InverseMatrix() {
 };
 
 // Operator
+IMatrix* Matrix::operator+(const IMatrix& other) const {
+    if (getRows() != other.getRows() || getCols() != other.getCols()) {
+        throw std::invalid_argument("Matrices dimensions must match for addition");
+    }
+    IMatrix *result = new Matrix(getRows(), getCols());
+    for (int i = 0; i < getRows(); ++i) {
+        for (int j = 0; j < getCols(); ++j) {
+            (*result)(i, j) = (*this)(i,j) + other(i, j);
+        }
+    }
+    return result;
+};
+
 double &Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
         throw std::out_of_range("out_of_range");
