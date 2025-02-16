@@ -151,6 +151,7 @@ IMatrix *Matrix::CalcComplements() {
             IMatrix* minor = getMinor(i, j);
             double minorDet = minor->Determinant();
             calcComplementsMatrix->matrix_[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * minorDet;
+            delete minor;
         }
     }
     return calcComplementsMatrix;
