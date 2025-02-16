@@ -23,7 +23,6 @@ public:
     virtual void MulNumber(const double num) = 0;
     virtual void MulMatrix(const IMatrix& other) = 0;
     virtual IMatrix* Transpose() = 0;
-    virtual int CalcComplementsElements(int rows, int cols) = 0;
     virtual IMatrix* CalcComplements() = 0;
     virtual double Determinant() = 0;
     virtual IMatrix* InverseMatrix() = 0;
