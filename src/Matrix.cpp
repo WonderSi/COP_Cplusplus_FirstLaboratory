@@ -18,6 +18,7 @@ void Matrix::memoryDeallocation() {
         delete[] matrix_[i];
     }
     delete[] matrix_;
+    matrix_ = nullptr;
 }
 
 
