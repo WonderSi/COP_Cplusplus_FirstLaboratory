@@ -249,6 +249,19 @@ bool Matrix::operator==(const IMatrix& other) const {
     return EqMatrix(other);
 };
 
+IMatrix& Matrix::operator=(const IMatrix& other) {
+    memoryDeallocation();
+    rows_ = other.getRows();
+    cols_ = other.getCols();
+    memoryAllocation();
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            (*this)(i,j) = other(i,j);
+        }
+    }
+    return *this;
+};
+
 double &Matrix::operator()(int row, int col) {
     if (row < 0 || row >= rows_ || col < 0 || col >= cols_) {
         throw std::out_of_range("out_of_range");

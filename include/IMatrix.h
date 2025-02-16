@@ -33,7 +33,7 @@ public:
     virtual IMatrix* operator*(const IMatrix& other) const = 0;
     virtual IMatrix* operator*(const double num) const = 0;
     virtual bool operator==(const IMatrix& other) const = 0;
-    virtual IMatrix& operator=(const IMatrix& other)  = 0;
+    virtual IMatrix& operator=(const IMatrix& other) = 0;
     virtual IMatrix& operator+=(const IMatrix& other) = 0;
     virtual IMatrix& operator-=(const IMatrix& other) = 0;
     virtual IMatrix& operator*=(const IMatrix& other) = 0;
