@@ -49,6 +49,7 @@ public:
     IMatrix* operator*(const IMatrix& other) const override;
     IMatrix* operator*(const double num) const override;
     bool operator==(const IMatrix& other) const override;
+    Matrix& operator=(const Matrix& other);
     IMatrix& operator=(const IMatrix& other)  override;
     IMatrix& operator+=(const IMatrix& other) override;
     IMatrix& operator-=(const IMatrix& other) override;

@@ -261,7 +261,26 @@ bool Matrix::operator==(const IMatrix& other) const {
     return EqMatrix(other);
 };
 
+Matrix& Matrix::operator=(const Matrix& other) {
+    if (this == &other) {
+        return *this;
+    }
+    memoryDeallocation();
+    rows_ = other.rows_;
+    cols_ = other.cols_;
+    memoryAllocation();
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            matrix_[i][j] = other.matrix_[i][j];
+        }
+    }
+    return *this;
+}
+
 IMatrix& Matrix::operator=(const IMatrix& other) {
+    if (this == &other) {
+        return *this;
+    }
     memoryDeallocation();
     rows_ = other.getRows();
     cols_ = other.getCols();
