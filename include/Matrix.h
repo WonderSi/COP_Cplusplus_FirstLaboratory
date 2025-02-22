@@ -35,7 +35,7 @@ public:
     bool EqMatrix(const IMatrix& other) const override;
     void SumMatrix(const IMatrix& other) override;
     void SubMatrix(const IMatrix& other) override;
-    void MulNumber(const double num) override;
+    void MulNumber(const double num) const override;
     void MulMatrix(const IMatrix& other) override;
     IMatrix* Transpose() override;
     IMatrix* CalcComplements() override;

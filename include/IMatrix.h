@@ -19,7 +19,7 @@ public:
     virtual bool EqMatrix(const IMatrix& other) const = 0;
     virtual void SumMatrix(const IMatrix& other) = 0;
     virtual void SubMatrix(const IMatrix& other) = 0;
-    virtual void MulNumber(const double num) = 0;
+    virtual void MulNumber(const double num) const = 0;
     virtual void MulMatrix(const IMatrix& other) = 0;
     virtual IMatrix* Transpose() = 0;
     virtual IMatrix* CalcComplements() = 0;
