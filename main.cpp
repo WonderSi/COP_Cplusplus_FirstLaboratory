@@ -74,7 +74,10 @@ int main() {
         bool boolResultFG = F == G;
         std::cout << "F == G: " << boolResultFG << std::endl;
 
-        
+        bool boolResultFA = F->EqMatrix(*A);
+        std::cout << "F->EqMatrix(*A): " << boolResultFA << std::endl;
+
+
 
         delete A;
         delete B;
