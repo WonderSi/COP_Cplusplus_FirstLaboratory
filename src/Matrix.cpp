@@ -3,7 +3,6 @@
 //
 
 #include "../include/Matrix.h"
-#include "../include/IMatrix.h"
 
 // Memory
 void Matrix::memoryAllocation() {
@@ -255,7 +254,13 @@ IMatrix *Matrix::operator*(const IMatrix &other) const {
 
 IMatrix* Matrix::operator*(const double num) const {
     IMatrix *result = new Matrix(getRows(), getCols());
-    result->MulNumber(num);
+
+    for (int i = 0; i < getRows(); ++i) {
+        for (int j = 0; j < getCols(); ++j) {
+            (*result)(i, j) = (*this)(i, j) * num;
+        }
+    }
+
     return result;
 };
 

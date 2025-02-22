@@ -2,6 +2,7 @@
 // Created by 011ko on 15.02.2025.
 //
 
+#pragma once
 #include <iostream>
 #include "Matrix.h"
 
@@ -12,8 +13,6 @@ public:
     // Setter / Getter
     virtual int getRows() const = 0;
     virtual int getCols() const = 0;
-    virtual void setRows(int rows) = 0;
-    virtual void setCols(int cols) = 0;
     virtual IMatrix* getMinor(int rows, int cols) = 0;
 
     // Operation

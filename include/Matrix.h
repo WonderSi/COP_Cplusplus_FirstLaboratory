@@ -28,8 +28,6 @@ public:
     int getCols() const override {
         return cols_;
     };
-    void setRows (int rows) override;
-    void setCols (int cols) override;
     IMatrix* getMinor(int rows, int cols) override;
 
     // Operation
