@@ -137,10 +137,20 @@ void Matrix::MulMatrix(const IMatrix &other) {
             for (int k = 0; k < cols_; ++k) {
                  sum += matrix_[i][k] * other(k, j);
             }
-            result->matrix_[i][j] = sum;
+            (*result)(i, j) = sum;
         }
     }
-    *this = *result; //???
+
+    memoryDeallocation();
+    rows_ = result->getRows();
+    cols_ = result->getCols();
+    memoryAllocation();
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            matrix_[i][j] = (*result)(i , j);
+        }
+    }
+    delete result;
 };
 
 IMatrix *Matrix::Transpose() {
