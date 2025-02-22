@@ -217,7 +217,7 @@ IMatrix *Matrix::InverseMatrix() {
     IMatrix *transpose = complement->Transpose();
     transpose->MulNumber(1 / det);
     delete complement;
-    return transpose;
+    return transpose->Transpose();
 };
 
 
