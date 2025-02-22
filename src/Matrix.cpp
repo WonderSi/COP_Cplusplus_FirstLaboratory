@@ -130,17 +130,17 @@ void Matrix::MulMatrix(const IMatrix &other) {
         throw std::invalid_argument(
                 "The number of columns of the first matrix is not equal to the number of columns of the second matrix");
     }
-    Matrix result(rows_, other.getCols());
+    Matrix* result = new Matrix(rows_, other.getCols());
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < other.getCols(); ++j) {
             double sum;
             for (int k = 0; k < cols_; ++k) {
                  sum += matrix_[i][k] * other(k, j);
             }
-            result.matrix_[i][j] = sum;
+            result->matrix_[i][j] = sum;
         }
     }
-    *this = result; //???
+    *this = *result; //???
 };
 
 IMatrix *Matrix::Transpose() {
