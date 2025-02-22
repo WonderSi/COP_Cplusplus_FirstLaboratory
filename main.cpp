@@ -138,6 +138,10 @@ int main() {
         delete E;
         delete F;
         delete G;
+        delete H;
+        delete I;
+        delete J;
+        delete K;
     } catch (std::exception e) {
         std::cerr << e.what() << std::endl;
     }
