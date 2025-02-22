@@ -32,19 +32,19 @@ int main() {
         B->ShowMatrix();
 
         IMatrix *C = (*A + *B);
-        std::cout << "Matrix A + B: " << std::endl;
+        std::cout << "Matrix C (A + B): " << std::endl;
         C->ShowMatrix();
 
         IMatrix *D = (*A - *B);
-        std::cout << "Matrix A - B: " << std::endl;
+        std::cout << "Matrix D (A - B): " << std::endl;
         D->ShowMatrix();
 
         IMatrix *E = (*A * *B);
-        std::cout << "Matrix A * B: " << std::endl;
+        std::cout << "Matrix E (A * B): " << std::endl;
         E->ShowMatrix();
 
         IMatrix *H = (*A * 2);
-        std::cout << "Matrix A * 2: " << std::endl;
+        std::cout << "Matrix H (A * 2): " << std::endl;
         H->ShowMatrix();
 
         IMatrix *F = A;
@@ -68,7 +68,7 @@ int main() {
         F->ShowMatrix();
 
         IMatrix *G = A->Transpose();
-        std::cout << "Transpose of Matrix A: " << std::endl;
+        std::cout << "Matrix G (A->Transpose()): " << std::endl;
         G->ShowMatrix();
 
         bool boolResultFG = F == G;
@@ -92,6 +92,10 @@ int main() {
         B->MulMatrix(*B);
         std::cout << "B->MulMatrix(*B): " << std::endl;
         B->ShowMatrix();
+
+        IMatrix *I = E->CalcComplements();
+        std::cout << "Matrix I (E->CalcComplements()): " << std::endl;
+        I->ShowMatrix();
 
         delete A;
         delete B;
