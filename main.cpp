@@ -122,6 +122,15 @@ int main() {
 //        std::cout << "Check inverse matrix (J->MulMatrix(*J)): " << std::endl;
 //        K->ShowMatrix();
 
+//        std::cout << std::endl;
+//        IMatrix *L = new Matrix(2,2);
+//        (*L)(0,0) = 2;
+//        (*L)(0,1) = -3;
+//        (*L)(1,0) = 1;
+//        (*L)(1,1) = 2;
+//        L->ShowMatrix();
+//        std::cout<< L->Determinant() << std::endl;
+
         delete A;
         delete B;
         delete C;
