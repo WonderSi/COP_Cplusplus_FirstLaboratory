@@ -352,7 +352,7 @@ void Matrix::ShowMatrix() const {
 
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
-            std::cout << (*this)(i, j) << " "; // Выводим элемент с табуляцией
+            std::cout << (*this)(i, j) << "\t"; // Выводим элемент с табуляцией
         }
         std::cout << std::endl; // Переход на новую строку после каждой строки матрицы
     }

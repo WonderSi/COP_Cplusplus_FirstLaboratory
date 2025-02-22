@@ -89,6 +89,10 @@ int main() {
         std::cout << "B->MulNumber(2): " << std::endl;
         B->ShowMatrix();
 
+        B->MulMatrix(*B);
+        std::cout << "B->MulMatrix(*B): " << std::endl;
+        B->ShowMatrix();
+
         delete A;
         delete B;
         delete C;
