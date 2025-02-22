@@ -9,8 +9,12 @@ void Matrix::memoryAllocation() {
     matrix_ = new double *[rows_];
     for (int i = 0; i < rows_; i++) {
         matrix_[i] = new double[cols_];
+        for (int j = 0; j < cols_; ++j) {
+            matrix_[i][j] = 0;
+        }
     }
 }
+//инициализировать значения
 
 void Matrix::memoryDeallocation() {
     for (int i = 0; i < rows_; i++) {
@@ -212,15 +216,9 @@ IMatrix *Matrix::InverseMatrix() {
 
 // Operator
 IMatrix *Matrix::operator+(const IMatrix &other) const {
-    if (getRows() != other.getRows() || getCols() != other.getCols()) {
-        throw std::invalid_argument("Matrices dimensions must match for addition");
-    }
     IMatrix *result = new Matrix(getRows(), getCols());
-    for (int i = 0; i < getRows(); ++i) {
-        for (int j = 0; j < getCols(); ++j) {
-            (*result)(i, j) = (*this)(i, j) + other(i, j);
-        }
-    }
+    *result += *this;
+    *result += other;
     return result;
 };
 
@@ -229,11 +227,8 @@ IMatrix *Matrix::operator-(const IMatrix &other) const {
         throw std::invalid_argument("Matrices dimensions must match for addition");
     }
     IMatrix *result = new Matrix(getRows(), getCols());
-    for (int i = 0; i < getRows(); ++i) {
-        for (int j = 0; j < getCols(); ++j) {
-            (*result)(i, j) = (*this)(i, j) - other(i, j);
-        }
-    }
+    *result -= *this;
+    *result -= other;
     return result;
 };
 
@@ -341,9 +336,9 @@ void Matrix::ShowMatrix() const {
 
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
-            std::cout << (*this)(i, j) << "\t"; // Выводим элемент с табуляцией
+            std::cout << (*this)(i, j) << "\t";
         }
-        std::cout << std::endl; // Переход на новую строку после каждой строки матрицы
+        std::cout << std::endl;
     }
 }
 
