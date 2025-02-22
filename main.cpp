@@ -81,7 +81,9 @@ int main() {
         std::cout << "A->SumMatrix(*B): " << std::endl;
         A->ShowMatrix();
 
-        
+        A->SubMatrix(*B);
+        std::cout << "A->SubMatrix(*B): " << std::endl;
+        A->ShowMatrix();
 
         delete A;
         delete B;
@@ -89,6 +91,7 @@ int main() {
         delete D;
         delete E;
         delete F;
+        delete G;
     } catch (std::exception e) {
         std::cerr << e.what() << std::endl;
     }
