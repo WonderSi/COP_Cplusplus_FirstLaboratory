@@ -329,6 +329,20 @@ const double &Matrix::operator()(int row, int col) const {
     return matrix_[row][col];
 }
 
+void Matrix::ShowMatrix() const {
+    if (rows_ == 0 || cols_ == 0) {
+        throw std::invalid_argument("Matrix is empty");
+
+    }
+
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            std::cout << (*this)(i, j) << " "; // Выводим элемент с табуляцией
+        }
+        std::cout << std::endl; // Переход на новую строку после каждой строки матрицы
+    }
+}
+
 
 
 

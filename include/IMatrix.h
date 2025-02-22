@@ -40,4 +40,7 @@ public:
     virtual IMatrix& operator*=(const double num) = 0;
     virtual double& operator()(int row, int col) = 0;
     virtual const double& operator()(int row, int col) const = 0;
+
+    // Show
+    virtual void ShowMatrix() const = 0;
 };

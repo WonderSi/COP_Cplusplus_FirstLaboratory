@@ -28,9 +28,9 @@ public:
     int getCols() const override {
         return cols_;
     };
-    IMatrix* getMinor(int rows, int cols) override;
     void setRows (int rows) override;
     void setCols (int cols) override;
+    IMatrix* getMinor(int rows, int cols) override;
 
     // Operation
     bool EqMatrix(const IMatrix& other) const override;
@@ -57,4 +57,7 @@ public:
     IMatrix& operator*=(const double num) override;
     double& operator()(int row, int col) override;
     const double& operator()(int row, int col) const override;
+
+    // Show
+    void ShowMatrix() const override;
 };
