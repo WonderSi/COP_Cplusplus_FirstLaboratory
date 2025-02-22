@@ -69,7 +69,12 @@ int main() {
 
         IMatrix *G = A->Transpose();
         std::cout << "Transpose of Matrix A: " << std::endl;
-        F->ShowMatrix();
+        G->ShowMatrix();
+
+        bool boolResultFG = F == G;
+        std::cout << "F == G: " << boolResultFG << std::endl;
+
+        
 
         delete A;
         delete B;
