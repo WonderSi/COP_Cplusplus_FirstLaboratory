@@ -134,9 +134,11 @@ void Matrix::MulMatrix(const IMatrix &other) {
     Matrix result(rows_, other.getCols());
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < other.getCols(); ++j) {
+            double sum;
             for (int k = 0; k < cols_; ++k) {
-                result.matrix_[i][j] += matrix_[i][k] * other(k, j);
+                 sum += matrix_[i][k] * other(k, j);
             }
+            result.matrix_[i][j] = sum;
         }
     }
     *this = result; //???
