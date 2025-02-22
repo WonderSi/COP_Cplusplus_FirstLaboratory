@@ -216,8 +216,7 @@ IMatrix *Matrix::InverseMatrix() {
 
 // Operator
 IMatrix *Matrix::operator+(const IMatrix &other) const {
-    IMatrix *result = new Matrix(getRows(), getCols());
-    *result += *this;
+    IMatrix *result = new Matrix(*this);
     *result += other;
     return result;
 };
