@@ -77,7 +77,11 @@ int main() {
         bool boolResultFA = F->EqMatrix(*A);
         std::cout << "F->EqMatrix(*A): " << boolResultFA << std::endl;
 
+        A->SumMatrix(*B);
+        std::cout << "A->SumMatrix(*B): " << std::endl;
+        A->ShowMatrix();
 
+        
 
         delete A;
         delete B;
