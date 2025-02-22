@@ -133,24 +133,13 @@ void Matrix::MulMatrix(const IMatrix &other) {
     Matrix* result = new Matrix(rows_, other.getCols());
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < other.getCols(); ++j) {
-            double sum;
+            result->matrix_[i][j] = 0;
             for (int k = 0; k < cols_; ++k) {
-                 sum += matrix_[i][k] * other(k, j);
+                result->matrix_[i][j] += matrix_[i][k] * other(k, j);
             }
-            (*result)(i, j) = sum;
         }
     }
-
-    memoryDeallocation();
-    rows_ = result->getRows();
-    cols_ = result->getCols();
-    memoryAllocation();
-    for (int i = 0; i < rows_; ++i) {
-        for (int j = 0; j < cols_; ++j) {
-            matrix_[i][j] = (*result)(i , j);
-        }
-    }
-    delete result;
+    *this = *result; //???
 };
 
 IMatrix *Matrix::Transpose() {
@@ -217,7 +206,7 @@ IMatrix *Matrix::InverseMatrix() {
     IMatrix *transpose = complement->Transpose();
     transpose->MulNumber(1 / det);
     delete complement;
-    return transpose->Transpose();
+    return transpose;
 };
 
 

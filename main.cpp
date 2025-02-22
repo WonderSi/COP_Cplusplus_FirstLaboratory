@@ -103,13 +103,13 @@ int main() {
 
         IMatrix *J = new Matrix(3, 3);
         (*J)(0, 0) = 1;
-        (*J)(0, 1) = 2;
-        (*J)(0, 2) = 3;
-        (*J)(1, 0) = -2;
+        (*J)(0, 1) = -2;
+        (*J)(0, 2) = 1;
+        (*J)(1, 0) = 2;
         (*J)(1, 1) = 1;
-        (*J)(1, 2) = 2;
-        (*J)(2, 0) = 1;
-        (*J)(2, 1) = -1;
+        (*J)(1, 2) = -1;
+        (*J)(2, 0) = 3;
+        (*J)(2, 1) = 2;
         (*J)(2, 2) = -2;
         std::cout << "Create matrix J: " << std::endl;
         J->ShowMatrix();
@@ -118,9 +118,9 @@ int main() {
         std::cout << "Matrix J (J->InverseMatrix()): " << std::endl;
         K->ShowMatrix();
 
-//        K->MulMatrix(*J);
-//        std::cout << "Check inverse matrix (J->MulMatrix(*J)): " << std::endl;
-//        K->ShowMatrix();
+        K->MulMatrix(*J);
+        std::cout << "Check inverse matrix (K->MulMatrix(*J)): " << std::endl;
+        K->ShowMatrix();
 
 //        std::cout << std::endl;
 //        IMatrix *L = new Matrix(2,2);

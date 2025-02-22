@@ -11,6 +11,7 @@ private :
     int rows_, cols_;
     double **matrix_;
 
+    // Memory
     void memoryAllocation();
     void memoryDeallocation();
 public:
